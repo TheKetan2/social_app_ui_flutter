@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter_social_ui/data/data.dart';
+import 'package:flutter_social_ui/models/user_model.dart';
+import 'package:flutter_social_ui/widgets/following_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -26,44 +30,47 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 2,
-        centerTitle: true,
-        brightness: Brightness.light,
-        title: Text(
-          "FRENZY",
-          style: TextStyle(
-            color: Theme.of(context).primaryColor,
-            fontSize: 34,
-            fontWeight: FontWeight.w500,
-            letterSpacing: 10,
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 2,
+          centerTitle: true,
+          brightness: Brightness.light,
+          title: Text(
+            "FRENZY",
+            style: TextStyle(
+              color: Theme.of(context).primaryColor,
+              fontSize: 34,
+              fontWeight: FontWeight.w500,
+              letterSpacing: 10,
+            ),
+          ),
+          bottom: TabBar(
+            controller: _tabController,
+            labelColor: Theme.of(context).primaryColor,
+            labelStyle: TextStyle(
+              color: Theme.of(context).primaryColor,
+              fontSize: 18,
+              fontWeight: FontWeight.w500,
+            ),
+            unselectedLabelStyle: TextStyle(
+              fontSize: 17,
+              fontWeight: FontWeight.w500,
+            ),
+            indicatorWeight: 3.0,
+            tabs: [
+              Tab(
+                text: "Trending",
+              ),
+              Tab(
+                text: "New",
+              ),
+            ],
           ),
         ),
-        bottom: TabBar(
-          controller: _tabController,
-          labelColor: Theme.of(context).primaryColor,
-          labelStyle: TextStyle(
-            color: Theme.of(context).primaryColor,
-            fontSize: 18,
-            fontWeight: FontWeight.w500,
-          ),
-          unselectedLabelStyle: TextStyle(
-            fontSize: 17,
-            fontWeight: FontWeight.w500,
-          ),
-          indicatorWeight: 3.0,
-          tabs: [
-            Tab(
-              text: "Trending",
-            ),
-            Tab(
-              text: "New",
-            ),
+        body: ListView(
+          children: [
+            FollowingWidget(),
           ],
-        ),
-      ),
-      body: index == 0 ? Text("Trending") : Text("Latest"),
-    );
+        ));
   }
 }
