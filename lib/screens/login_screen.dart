@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:flutter_social_ui/screens/home_screen.dart';
 
 import "../widgets/curved_clipper.dart";
 
@@ -68,7 +69,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 30,
               ),
               GestureDetector(
-                onTap: () {},
+                onTap: () => Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (_) => HomeScreen())),
                 child: Container(
                   padding: EdgeInsets.symmetric(
                     horizontal: 130,
