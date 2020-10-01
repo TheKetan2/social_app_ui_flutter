@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_social_ui/data/data.dart';
 import 'package:flutter_social_ui/models/user_model.dart';
 import 'package:flutter_social_ui/widgets/following_widget.dart';
+import 'package:flutter_social_ui/widgets/post_carousel.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -12,6 +13,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
+  PageController _PageController;
   int index = 0;
 
   @override
@@ -19,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen>
     // TODO: implement initState
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
+    _PageController = PageController(initialPage: 0, viewportFraction: 0.8);
     _tabController.addListener(() {
       setState(() {
         index = _tabController.index;
@@ -70,6 +73,11 @@ class _HomeScreenState extends State<HomeScreen>
         body: ListView(
           children: [
             FollowingWidget(),
+            PostCarousel(
+              pageController: _PageController,
+              title: "Posts",
+              posts: posts,
+            ),
           ],
         ));
   }
