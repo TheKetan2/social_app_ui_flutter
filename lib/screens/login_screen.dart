@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
 
+import "../widgets/curved_clipper.dart";
+
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -14,11 +16,14 @@ class _LoginScreenState extends State<LoginScreen> {
           height: MediaQuery.of(context).size.height,
           child: Column(
             children: [
-              Image(
-                height: MediaQuery.of(context).size.height / 2.5,
-                width: double.infinity,
-                fit: BoxFit.cover,
-                image: AssetImage("assets/images/login_background.jpg"),
+              ClipPath(
+                clipper: CurvedClipper(),
+                child: Image(
+                  height: MediaQuery.of(context).size.height / 2.5,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                  image: AssetImage("assets/images/login_background.jpg"),
+                ),
               ),
               SizedBox(
                 height: 10,
