@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_social_ui/screens/home_screen.dart';
 import 'package:flutter_social_ui/screens/login_screen.dart';
+import 'package:flutter_social_ui/screens/profile_scrren.dart';
 
 class CustomDrawer extends StatelessWidget {
   @override
@@ -97,6 +98,12 @@ class CustomDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.account_box),
             title: Text("Your Profile"),
+            onTap: () => Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (_) => ProfileScreen(),
+              ),
+            ),
           ),
           ListTile(
             leading: Icon(Icons.settings),
