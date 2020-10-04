@@ -7,3 +7,7 @@
 |Login|Home|
 |----------------------|--------------------|
 |![](assets/login.png)|![](assets/home.png)|
+
+|Drawer|Profile|
+|----------------------|--------------------|
+|![](assets/drawer.png)|![](assets/profile.png)|
