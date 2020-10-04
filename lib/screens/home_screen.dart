@@ -15,6 +15,7 @@ class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   TabController _tabController;
   PageController _PageController;
+  final GlobalKey<ScaffoldState> _homescreenKey = GlobalKey<ScaffoldState>();
   int index = 0;
 
   @override
@@ -34,7 +35,16 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _homescreenKey,
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(
+            Icons.menu,
+            color: Theme.of(context).primaryColor,
+            size: 30,
+          ),
+          onPressed: () => _homescreenKey.currentState.openDrawer(),
+        ),
         backgroundColor: Colors.white,
         elevation: 2,
         centerTitle: true,
